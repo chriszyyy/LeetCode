@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSum = function(nums, target) {
+
+    const numsMap = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        numsMap.set(nums[i], i);
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        const complementIndex = numsMap.get(complement);
+
+        if (complementIndex && complementIndex !== i) {
+            return [i, complementIndex];
+        }
+    }
+
+    throw new Error('No result error');
+};
